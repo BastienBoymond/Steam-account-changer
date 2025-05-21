@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Steam Profile Changer",
+  "version": "1.0",
+  "description": "Change your Steam profile with saved configurations",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://steamcommunity.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+  
+} 

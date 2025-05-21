@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steam Profile Changer</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    .profile-button {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .profile-button img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    #add-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    #form-container {
+      display: none;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    #profiles-container {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button id="add-button">+ Ajouter un profil</button>
+  
+  <div id="form-container">
+    <div class="form-group">
+      <label for="website-name">Nom du site :</label>
+      <input type="text" id="website-name" required>
+    </div>
+    <div class="form-group">
+      <label for="profile-name">Nom du profil :</label>
+      <input type="text" id="profile-name" required>
+    </div>
+    <div class="form-group">
+      <label for="profile-image">URL de l'image :</label>
+      <input type="text" id="profile-image" required>
+    </div>
+    <button id="save-profile">Sauvegarder</button>
+  </div>
+
+  <div id="profiles-container"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html> 
