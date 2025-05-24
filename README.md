@@ -1,37 +1,50 @@
-# Steam Profile Changer - Chrome Extension
+# <div align="center">
+    <h1>Steam Account Changer</h1>
 
-This Chrome extension allows you to quickly save and switch between predefined Steam profile configurations.
+<br>
+</div>
 
-## Installation
+## :notebook: Description :notebook:
 
-1. Open Chrome and go to `chrome://extensions/`
-2. Enable "Developer mode" in the top right
-3. Click "Load unpacked extension"
-4. Select the folder containing the extension files
+Cette extension Chrome a été créée pour permettre aux utilisateurs de Steam de changer rapidement entre différents profils prédéfinis. Elle offre une interface intuitive et moderne pour gérer vos configurations de profil Steam.
 
-## Usage
+## :sparkles: Fonctionnalités :sparkles:
 
-1. Click the extension icon in the Chrome toolbar
-2. Click the "+" button to add a new profile
-3. Fill in the form with:
-   - Website name
-   - Profile name
-   - Profile image URL
-   - Website URL (optional)
-4. Click "Save"
-5. To use a profile, simply click on its button
+* Stockage local des paramètres de profil
+* Changement rapide entre les noms et images de profil Steam
+* Interface utilisateur intuitive
+* Thème sombre inspiré de Steam
+* Animations et transitions fluides
+* Design responsive avec taille de popup fixe (360x580px)
 
-## Features
+## :cd: Installation :cd:
 
-- Local storage for profile settings
-- Quick switching between Steam profile names and images
-- Intuitive user interface
-- Modern Steam-inspired dark theme
-- Smooth animations and transitions
-- Responsive design with fixed popup size (360x580px)
+1. Ouvrez Chrome et accédez à `chrome://extensions/`
+2. Activez le "Mode développeur" en haut à droite
+3. Cliquez sur "Charger l'extension non empaquetée"
+4. Sélectionnez le dossier contenant les fichiers de l'extension
 
-## Notes
+## :gear: Utilisation :gear:
 
-- The extension requires access to steamcommunity.com to function
-- Make sure you are logged into Steam before using the extension
-- All profile data is stored locally in your browser
+1. Cliquez sur l'icône de l'extension dans la barre d'outils Chrome
+2. Cliquez sur le bouton "+" pour ajouter un nouveau profil
+3. Remplissez le formulaire avec :
+   - Nom du site web
+   - Nom du profil
+   - URL de l'image du profil
+   - URL du site web (optionnel)
+4. Cliquez sur "Enregistrer"
+5. Pour utiliser un profil, cliquez simplement sur son bouton
+
+## :warning: Notes :warning:
+
+* L'extension nécessite un accès à steamcommunity.com pour fonctionner
+* Assurez-vous d'être connecté à Steam avant d'utiliser l'extension
+* Toutes les données de profil sont stockées localement dans votre navigateur
+
+## :camera_flash: Captures d'écran :camera_flash:
+
+* Interface de l'extension :
+    <br>
+    <img src="assets/screenshot.png" title="Interface de l'extension" width="400px"/>
+
