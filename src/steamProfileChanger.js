@@ -1,6 +1,18 @@
 export function changeSteamProfile(profile) {
   changeSteamProfileName(profile);
   changeSteamProfilePicture(profile);
+  openWebsite(profile.websiteUrl);
+}
+
+function openWebsite(url) {
+  console.log("Ouverture du site web:", url);
+  if (url) {
+    chrome.tabs.create({
+      url: url,
+    });
+  } else {
+    console.log("URL non valide");
+  }
 }
 
 function changeSteamProfileName(profile) {
@@ -26,12 +38,12 @@ function changeSteamProfileName(profile) {
               console.log("Nom du profil modifié avec succès");
               setTimeout(() => {
                 chrome.runtime.sendMessage({ action: 'closeTab', tabId: profileData.tabId });
-              }, 2000);
+              }, 1000);
             } else {
               console.log("Élément de nom non trouvé");
               chrome.runtime.sendMessage({ action: 'closeTab', tabId: profileData.tabId });
             }
-          }, 3000);
+          });
         },
         args: [{ ...profile, tabId: tab.id }]
       });
@@ -53,7 +65,7 @@ function changeSteamProfilePicture(profile) {
         function: async (profileData) => {
           const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
           
-          await sleep(3000);
+          await sleep(500);
           console.log("Page chargée, début du processus");
           
           const container = document.querySelector('._22EnaYFQb5I0kYtH2UHEhV');
@@ -72,7 +84,7 @@ function changeSteamProfilePicture(profile) {
               fileInput.dispatchEvent(new Event('input', { bubbles: true }));
               fileInput.dispatchEvent(new Event('change', { bubbles: true }));
               
-              await sleep(2000);
+              await sleep(100);
               
               const buttons = Array.from(document.querySelectorAll('button'));
               const uploadButton = buttons.find(b => 
@@ -84,7 +96,7 @@ function changeSteamProfilePicture(profile) {
               
               if (uploadButton) {
                 uploadButton.click();
-                await sleep(2000);
+                await sleep(200);
                 chrome.runtime.sendMessage({ action: 'closeTab', tabId: profileData.tabId });
               } else {
                 chrome.runtime.sendMessage({ action: 'closeTab', tabId: profileData.tabId });

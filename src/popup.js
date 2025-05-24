@@ -97,4 +97,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('profile-image').value = '';
     document.getElementById('website-url').value = '';
   }
-}); 
+});
