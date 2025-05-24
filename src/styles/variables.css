@@ -1,0 +1,43 @@
+:root {
+  /* Couleurs */
+  --primary-color: #171a21;
+  --secondary-color: #66c0f4;
+  --text-color: #ffffff;
+  --hover-color: #2a475e;
+  --danger-color: #c94141;
+  --danger-hover-color: #d45555;
+  --overlay-color: rgba(0, 0, 0, 0.75);
+
+  /* Dimensions */
+  --popup-width: 360px;
+  --popup-height: 580px;
+  --popup-padding: 16px;
+  --header-height: 60px;
+  --footer-height: 16px;
+  --content-height: calc(var(--popup-height) - var(--header-height) - var(--footer-height));
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Scrollbar */
+  --scrollbar-width: 8px;
+  --scrollbar-track-color: var(--hover-color);
+  --scrollbar-thumb-color: var(--secondary-color);
+  --scrollbar-thumb-hover-color: #7fd3ff;
+
+  /* Effets */
+  --popup-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --popup-border: 1px solid rgba(255, 255, 255, 0.1);
+} 

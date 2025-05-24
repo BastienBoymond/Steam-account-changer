@@ -18,7 +18,7 @@ function changeSteamProfileName(profile) {
             const nameInputs = document.getElementsByName('personaName');
             if (nameInputs && nameInputs.length > 0) {
               const nameInput = nameInputs[0];
-              nameInput.value += profileData.profileName;
+              nameInput.value = profileData.profileName;
               nameInput.dispatchEvent(new Event('input', { bubbles: true }));
               nameInput.dispatchEvent(new Event('change', { bubbles: true }));
               const button = document.querySelector('button[type="submit"]');

@@ -1,0 +1,92 @@
+@import 'variables.css';
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-sm) 0;
+  padding: var(--spacing-md);
+  cursor: pointer;
+  background-color: var(--hover-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-fast);
+  position: relative;
+  min-height: 72px;
+}
+
+.profile-button:first-child {
+  margin-top: 0;
+}
+
+.profile-button:last-child {
+  margin-bottom: var(--spacing-sm);
+}
+
+.profile-button:hover {
+  transform: translateX(2px);
+  background-color: rgba(102, 192, 244, 0.1);
+  border-color: var(--secondary-color);
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: var(--spacing-md);
+}
+
+.profile-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+}
+
+.profile-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.website-name {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.website-url {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 0.85em;
+  opacity: 0.8;
+  transition: all var(--transition-fast);
+}
+
+.website-url:hover {
+  opacity: 1;
+  color: #7fd3ff;
+}
+
+.website-url svg {
+  flex-shrink: 0;
+}
+
+.website-url span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 

@@ -1,32 +1,37 @@
-# Steam Profile Changer - Extension Chrome
+# Steam Profile Changer - Chrome Extension
 
-Cette extension Chrome vous permet de sauvegarder et de changer rapidement votre profil Steam avec des configurations prédéfinies.
+This Chrome extension allows you to quickly save and switch between predefined Steam profile configurations.
 
 ## Installation
 
-1. Ouvrez Chrome et accédez à `chrome://extensions/`
-2. Activez le "Mode développeur" en haut à droite
-3. Cliquez sur "Charger l'extension non empaquetée"
-4. Sélectionnez le dossier contenant les fichiers de l'extension
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable "Developer mode" in the top right
+3. Click "Load unpacked extension"
+4. Select the folder containing the extension files
 
-## Utilisation
+## Usage
 
-1. Cliquez sur l'icône de l'extension dans la barre d'outils de Chrome
-2. Cliquez sur le bouton "+" pour ajouter un nouveau profil
-3. Remplissez le formulaire avec :
-   - Nom du site
-   - Nom du profil
-   - URL de l'image de profil
-4. Cliquez sur "Sauvegarder"
-5. Pour utiliser un profil, cliquez simplement sur le bouton correspondant
+1. Click the extension icon in the Chrome toolbar
+2. Click the "+" button to add a new profile
+3. Fill in the form with:
+   - Website name
+   - Profile name
+   - Profile image URL
+   - Website URL (optional)
+4. Click "Save"
+5. To use a profile, simply click on its button
 
-## Fonctionnalités
+## Features
 
-- Sauvegarde des profils dans le stockage local
-- Changement rapide du nom et de l'image de profil Steam
-- Interface utilisateur intuitive
+- Local storage for profile settings
+- Quick switching between Steam profile names and images
+- Intuitive user interface
+- Modern Steam-inspired dark theme
+- Smooth animations and transitions
+- Responsive design with fixed popup size (360x580px)
 
 ## Notes
 
-- L'extension nécessite l'accès à steamcommunity.com pour fonctionner
-- Assurez-vous d'être connecté à Steam avant d'utiliser l'extension
+- The extension requires access to steamcommunity.com to function
+- Make sure you are logged into Steam before using the extension
+- All profile data is stored locally in your browser
