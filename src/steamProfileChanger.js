@@ -23,9 +23,12 @@ function changeSteamProfileName(profile) {
     try {
       await chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        function: (profileData) => {
+        function: async (profileData) => {
+          const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+          
+          await sleep(500);
           console.log("Tentative de modification du profil");
-          setTimeout(() => {
+         
             console.log("Tentative de modification du profil");
             const nameInputs = document.getElementsByName('personaName');
             if (nameInputs && nameInputs.length > 0) {
@@ -43,7 +46,6 @@ function changeSteamProfileName(profile) {
               console.log("Élément de nom non trouvé");
               chrome.runtime.sendMessage({ action: 'closeTab', tabId: profileData.tabId });
             }
-          });
         },
         args: [{ ...profile, tabId: tab.id }]
       });
