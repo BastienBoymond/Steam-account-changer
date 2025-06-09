@@ -34,6 +34,18 @@ export function deleteProfile(index) {
   });
 }
 
+export function updateProfile(index, updatedProfile) {
+  return new Promise((resolve) => {
+    chrome.storage.local.get(['profiles'], (result) => {
+      const profiles = result.profiles || [];
+      profiles[index] = updatedProfile;
+      chrome.storage.local.set({ profiles }, () => {
+        resolve();
+      });
+    });
+  });
+}
+
 function updateEmptyState(profileCount) {
   const emptyState = document.getElementById('empty-state');
   const profilesContainer = document.getElementById('profiles-container');
@@ -47,7 +59,7 @@ function updateEmptyState(profileCount) {
   }
 }
 
-export function createProfileButton(profile, index, onProfileClick, onDeleteClick) {
+export function createProfileButton(profile, index, onProfileClick, onDeleteClick, onUpdateClick) {
   const template = document.getElementById('profile-template');
   const profileElement = template.content.cloneNode(true);
   
@@ -58,6 +70,7 @@ export function createProfileButton(profile, index, onProfileClick, onDeleteClic
   const websiteUrl = profileElement.querySelector('.website-url');
   const websiteUrlText = websiteUrl.querySelector('span');
   const deleteButton = profileElement.querySelector('.delete-profile');
+  const updateButton = profileElement.querySelector('.update-profile');
   
   img.src = profile.profileImage;
   img.alt = profile.websiteName;
@@ -73,7 +86,7 @@ export function createProfileButton(profile, index, onProfileClick, onDeleteClic
   }
   
   button.addEventListener('click', (e) => {
-    if (!e.target.closest('.delete-profile') && !e.target.closest('.website-url')) {
+    if (!e.target.closest('.delete-profile') && !e.target.closest('.update-profile') && !e.target.closest('.website-url')) {
       onProfileClick(profile);
     }
   });
@@ -81,6 +94,11 @@ export function createProfileButton(profile, index, onProfileClick, onDeleteClic
   deleteButton.addEventListener('click', (e) => {
     e.stopPropagation();
     onDeleteClick(index);
+  });
+
+  updateButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onUpdateClick(profile, index);
   });
   
   return profileElement;
