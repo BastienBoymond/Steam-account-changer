@@ -1,4 +1,4 @@
-import { saveProfile, loadProfiles, createProfileButton, deleteProfile } from './profileManager.js';
+import { saveProfile, loadProfiles, createProfileButton, deleteProfile, updateProfile } from './profileManager.js';
 import { changeSteamProfile } from './steamProfileChanger.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,12 +12,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   const confirmDeleteButton = document.getElementById('confirm-delete');
   
   let profileToDelete = null;
+  let isUpdating = false;
+  let profileToUpdate = null;
 
   // Load existing profiles
   await updateProfilesList();
 
   // Add button handler
   addButton.addEventListener('click', () => {
+    isUpdating = false;
+    document.querySelector('.modal-dialog h3').textContent = 'Add New Profile';
     formModal.classList.add('active');
   });
 
@@ -43,7 +47,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const websiteUrl = document.getElementById('website-url').value;
 
     if (websiteName && profileName && profileImage) {
-      await saveProfile({ websiteName, profileName, profileImage, websiteUrl });
+      if (isUpdating && profileToUpdate !== null) {
+        await updateProfile(profileToUpdate.index, { websiteName, profileName, profileImage, websiteUrl });
+        profileToUpdate = null;
+      } else {
+        await saveProfile({ websiteName, profileName, profileImage, websiteUrl });
+      }
       formModal.classList.remove('active');
       clearForm();
       await updateProfilesList();
@@ -85,6 +94,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         async (indexToDelete) => {
           profileToDelete = indexToDelete;
           confirmDialog.classList.add('active');
+        },
+        async (profileToEdit, index) => {
+          isUpdating = true;
+          profileToUpdate = { profile: profileToEdit, index };
+          
+          // Fill form with existing data
+          document.getElementById('website-name').value = profileToEdit.websiteName;
+          document.getElementById('profile-name').value = profileToEdit.profileName;
+          document.getElementById('profile-image').value = profileToEdit.profileImage;
+          document.getElementById('website-url').value = profileToEdit.websiteUrl || '';
+          
+          // Update modal title
+          document.querySelector('.modal-dialog h3').textContent = 'Update Profile';
+          
+          // Show modal
+          formModal.classList.add('active');
         }
       );
       profilesContainer.appendChild(profileButton);
@@ -96,5 +121,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('profile-name').value = '';
     document.getElementById('profile-image').value = '';
     document.getElementById('website-url').value = '';
+    isUpdating = false;
+    profileToUpdate = null;
   }
 });
