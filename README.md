@@ -1,6 +1,9 @@
 <div align="center">
     <h1>Steam Account Changer</h1>
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/hadbmcidfdkhdmfdcfengdgphcobfgkd?label=Stars&color=brightgreen&logo=googlechrome&style=for-the-badge)](https://chromewebstore.google.com/detail/steam-profile-changer/hadbmcidfdkhdmfdcfengdgphcobfgkd?authuser=0&hl=fr)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/users/hadbmcidfdkhdmfdcfengdgphcobfgkd?color=brightgreen&logo=googlechrome&style=for-the-badge)](https://chromewebstore.google.com/detail/steam-profile-changer/hadbmcidfdkhdmfdcfengdgphcobfgkd?authuser=0&hl=fr)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/hadbmcidfdkhdmfdcfengdgphcobfgkd?color=brightgreen&logo=googlechrome&style=for-the-badge&label=Version)](https://chromewebstore.google.com/detail/steam-profile-changer/hadbmcidfdkhdmfdcfengdgphcobfgkd?authuser=0&hl=fr)
 <br>
 </div>
 
