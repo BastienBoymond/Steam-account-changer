@@ -1,5 +1,6 @@
 import { saveProfile, loadProfiles, createProfileButton, deleteProfile, updateProfile } from './profileManager.js';
 import { changeSteamProfile } from './steamProfileChanger.js';
+import { loadSettings, saveSettings } from './settingsManager.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const addButton = document.getElementById('add-button');
@@ -10,13 +11,56 @@ document.addEventListener('DOMContentLoaded', async () => {
   const confirmDialog = document.getElementById('confirm-dialog');
   const cancelDeleteButton = document.getElementById('cancel-delete');
   const confirmDeleteButton = document.getElementById('confirm-delete');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const saveSettingsButton = document.getElementById('save-settings');
   
   let profileToDelete = null;
   let isUpdating = false;
   let profileToUpdate = null;
 
-  // Load existing profiles
-  await updateProfilesList();
+  // Load existing profiles and settings
+  await Promise.all([
+    updateProfilesList(),
+    loadAndDisplaySettings()
+  ]);
+
+  // Tab switching
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.dataset.tab;
+      
+      // Update active states
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      button.classList.add('active');
+      document.getElementById(`${tabName}-tab`).classList.add('active');
+    });
+  });
+
+  // Settings handlers
+  async function loadAndDisplaySettings() {
+    const settings = await loadSettings();
+    document.getElementById('timeout-speed').value = settings.speed;
+  }
+
+  // Sauvegarder automatiquement lors du changement de vitesse
+  document.getElementById('timeout-speed').addEventListener('change', async (e) => {
+    const speed = e.target.value;
+    if (await saveSettings(speed)) {
+      // Afficher un feedback visuel temporaire
+      const select = e.target;
+      const originalBackground = select.style.backgroundColor;
+      select.style.backgroundColor = 'var(--secondary-color)';
+      select.style.color = 'var(--primary-color)';
+      
+      setTimeout(() => {
+        select.style.backgroundColor = originalBackground;
+        select.style.color = 'var(--text-color)';
+      }, 500);
+    }
+  });
 
   // Add button handler
   addButton.addEventListener('click', () => {

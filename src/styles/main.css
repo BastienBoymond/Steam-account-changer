@@ -4,6 +4,7 @@
 @import 'profile.css';
 @import 'modal.css';
 @import 'inputs.css';
+@import 'tabs.css';
 
 .profile-actions {
   display: flex;
