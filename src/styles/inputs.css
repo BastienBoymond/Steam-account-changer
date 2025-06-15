@@ -79,4 +79,55 @@
 
 .form-group input:focus ~ ::after {
   width: 100%;
+}
+
+/* Style pour le menu déroulant de vitesse */
+.speed-select {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  color: var(--text-color);
+  font-size: 1em;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 20px;
+}
+
+.speed-select:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.speed-select:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(102, 192, 244, 0.2);
+}
+
+/* Style pour les options du menu déroulant */
+.speed-select option {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: var(--spacing-md);
+}
+
+/* Style pour l'option sélectionnée */
+.speed-select option:checked {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.settings-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.4;
 } 
