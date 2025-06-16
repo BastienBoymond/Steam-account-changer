@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const tabButtons = document.querySelectorAll('.tab-button');
   const tabContents = document.querySelectorAll('.tab-content');
   const saveSettingsButton = document.getElementById('save-settings');
+  const exportButton = document.getElementById('export-button');
+  const importButton = document.getElementById('import-button');
+  const importInput = document.getElementById('import-input');
   
   let profileToDelete = null;
   let isUpdating = false;
@@ -24,6 +27,87 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateProfilesList(),
     loadAndDisplaySettings()
   ]);
+
+  // Fonction pour afficher les notifications
+  function showSnackbar(message, duration = 2000) {
+    let snackbar = document.querySelector('.snackbar');
+    if (!snackbar) {
+      snackbar = document.createElement('div');
+      snackbar.className = 'snackbar';
+      document.body.appendChild(snackbar);
+    }
+    
+    snackbar.textContent = message;
+    snackbar.classList.add('show');
+    
+    setTimeout(() => {
+      snackbar.classList.remove('show');
+    }, duration);
+  }
+
+  // Gestionnaire d'export
+  exportButton.addEventListener('click', async () => {
+    try {
+      const [profiles, settings] = await Promise.all([
+        loadProfiles(),
+        loadSettings()
+      ]);
+      
+      const exportData = {
+        profiles,
+        settings
+      };
+      
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'steam-profiles-config.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showSnackbar('Configuration exported successfully');
+    } catch (error) {
+      console.error('Error exporting configuration:', error);
+      showSnackbar('Error exporting configuration');
+    }
+  });
+
+  // Gestionnaire d'import
+  importButton.addEventListener('click', () => {
+    importInput.click();
+  });
+
+  importInput.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        
+        if (data.profiles && Array.isArray(data.profiles)) {
+          // Import profiles
+          await chrome.storage.local.set({ profiles: data.profiles });
+          await updateProfilesList();
+          
+          // Import settings if they exist
+          if (data.settings) {
+            await saveSettings(data.settings.speed);
+            await loadAndDisplaySettings();
+          }
+          
+          showSnackbar('Configuration imported successfully');
+        } else {
+          throw new Error('Invalid configuration format');
+        }
+      } catch (error) {
+        console.error('Error importing configuration:', error);
+        showSnackbar('Error importing configuration');
+      }
+      importInput.value = '';
+    }
+  });
 
   // Tab switching
   tabButtons.forEach(button => {
